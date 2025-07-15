@@ -1,8 +1,14 @@
 import Input from "@/components/input";
+import axios from "axios";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useCallback, useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Auth = () => {
+  const router = useRouter();
   //   const start = performance.now();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -14,6 +20,34 @@ const Auth = () => {
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
+
+  const login = useCallback(async () => {
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: "/profiles",
+      });
+
+      if (res?.ok) {
+        router.push("/profiles");
+      } else {
+        setVariant("register");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }, [email, password, router]);
+
+  const register = useCallback(async () => {
+    try {
+      await axios.post("/api/register", { email, name: username, password });
+      login();
+    } catch (error) {
+      console.error(error);
+    }
+  }, [email, username, password, login]);
 
   //   console.log(`Render time: ${performance.now() - start}ms`);
   return (
@@ -60,9 +94,24 @@ const Auth = () => {
             <button
               type="submit"
               className="bg-red-600 py-3 rounded-md text-white w-full mt-10 hover:bg-red-700 transition"
+              onClick={variant === "login" ? login : register}
             >
               {variant === "login" ? "Login" : "Sign up"}
             </button>
+            <div className="flex flex-row items-center gap-4 mt-8 justify-center">
+              <button
+                onClick={() => signIn("google", { callbackUrl: "/profiles" })}
+                className="size-10 rounded-full bg-white flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+              >
+                <FcGoogle size={30} />
+              </button>
+              <button
+                onClick={() => signIn("github", { callbackUrl: "/profiles" })}
+                className="size-10 rounded-full bg-white flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+              >
+                <FaGithub size={30} />
+              </button>
+            </div>
             <p className="text-neutral-500 mt-12 cursor-pointer">
               {variant === "login"
                 ? "First time using Netflix?"
