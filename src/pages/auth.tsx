@@ -1,11 +1,13 @@
-import Input from "@/components/input";
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useCallback, useState } from "react";
-import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+
+import Input from "@/components/input";
 
 const Auth = () => {
   const router = useRouter();
