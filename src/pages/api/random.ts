@@ -8,11 +8,11 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method !== "GET") {
-    return res.status(405).end(); // 405 for unAuthenticated request
+    return res.status(405).end(); // for prohibited http method
   }
 
   try {
-    await serverAuth(req);
+    await serverAuth(req, res);
     const movieCount = await prismadb.movie.count();
     const randomIndex = Math.floor(Math.random() * movieCount);
 
