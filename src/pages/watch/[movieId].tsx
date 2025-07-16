@@ -1,7 +1,33 @@
 import { useMovie } from "@/hooks/useMovie";
+import { getServerSession } from "next-auth";
 import { useRouter } from "next/router";
 import React from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { authOptions } from "../api/auth/[...nextauth]";
+import { NextPageContext } from "next";
+
+export async function getServerSideProps({ req, res }: NextPageContext) {
+  const session = await getServerSession(req, res, authOptionsptions);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      user: {
+        name: session.user?.name,
+        email: session.user?.email,
+        image: session.user?.image,
+      },
+    },
+  };
+}
 
 const Watch = () => {
   const router = useRouter();

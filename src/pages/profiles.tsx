@@ -1,10 +1,12 @@
 import { InferGetServerSidePropsType, NextPageContext } from "next";
+import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { authOptions } from "./api/auth/[...nextauth]";
 
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+export async function getServerSideProps({ req, res }: NextPageContext) {
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {

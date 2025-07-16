@@ -8,9 +8,11 @@ import { useMovieList } from "@/hooks/useMovieList";
 import { useFavorites } from "@/hooks/useFavourites";
 import InfoModal from "@/components/InfoModal";
 import useInfoModal from "@/hooks/useInfoModal";
+import { authOptions } from "./api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 
 export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+  const session = await getServerSession(context.req, context.res, authOptions);
 
   if (!session) {
     return {
