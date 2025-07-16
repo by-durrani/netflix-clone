@@ -8,28 +8,38 @@ A beautiful Netflix UI clone built with modern frontend tools. Browse movies, wa
 
 ## 🚀 Features
 
+## ✨ Features
+
 - Browse popular & trending movies
 - View detailed movie pages
 - Play trailers via YouTube integration
+- User authentication with NextAuth
 - Responsive and mobile-friendly layout
-- Fast Vite-based development
+- Fast development powered by Next.js (Turbopack)
 - Clean and reusable components
+- State management with Zustand
+- Data fetching with SWR
 
 ---
 
 ## 🛠 Tech Stack
 
-| Category        | Tool / Library                                     |
-|-----------------|----------------------------------------------------|
-| Framework       | [React](https://reactjs.org/)                      |
-| Build Tool      | [Vite](https://vitejs.dev/)                        |
-| Styling         | [Tailwind CSS](https://tailwindcss.com/)           |
-| State Management| [Zustand](https://github.com/pmndrs/zustand)       |
-| Data Fetching   | [SWR](https://swr.vercel.app/), [axios](https://axios-http.com) |
-| Type Checking   | [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html) |
-| Icons           | [React Icons](https://react-icons.github.io/react-icons/) |
-| Routing         | [React Router DOM](https://reactrouter.com/)       |
-| API             | [TMDb API, Open APIs](https://www.themoviedb.org/documentation/api) |
+| Category            | Tool / Library                                              |
+|---------------------|-------------------------------------------------------------|
+| Framework           | [Next.js 15 (Turbopack)](https://nextjs.org/)              |
+| Authentication      | [NextAuth.js](https://next-auth.js.org/)                   |
+| Database            | [MongoDB](https://cloud.mongodb.com/)                   |
+| ORM / DB Access     | [Prisma](https://www.prisma.io/)                            |
+| Database Adapter    | [@next-auth/prisma-adapter](https://authjs.dev/reference/adapter/prisma) |
+| Password Hashing    | [bcrypt](https://github.com/kelektiv/node.bcrypt.js/)       |
+| State Management    | [Zustand](https://github.com/pmndrs/zustand)                |
+| Data Fetching       | [SWR](https://swr.vercel.app/)                              |
+| HTTP Requests       | [Axios](https://axios-http.com/)                            |
+| UI Styling          | [Tailwind CSS](https://tailwindcss.com/) + [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate) |
+| Icons               | [React Icons](https://react-icons.github.io/react-icons/)   |
+| Utility Functions   | [Lodash](https://lodash.com/)                               |
+| Linting             | [ESLint](https://eslint.org/)                               |
+| Language Support    | [TypeScript](https://www.typescriptlang.org/)               |
 
 ---
 
