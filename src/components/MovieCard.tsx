@@ -1,15 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import { useRouter } from "next/navigation";
+import useInfoModal from "@/hooks/useInfoModal";
+import { BiChevronDown } from "react-icons/bi";
 
 interface MovieCardProps {
   data: Record<string, any>;
 }
 const MovieCard: FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
+  const { openModal } = useInfoModal();
+
+  const handleOpenModal = useCallback(() => {
+    openModal(data?.id);
+  }, [openModal, data?.id]);
 
   return (
     <div className="group bg-zinc-900 col-span-1 relative h-[12vw]">
@@ -41,6 +48,17 @@ const MovieCard: FC<MovieCardProps> = ({ data }) => {
               <BsFillPlayFill size={30} />
             </div>
             <FavoriteButton movieId={data?.id} />
+            <div
+              onClick={handleOpenModal}
+              className="cursor-pointer ml-auto group size-6 lg:size-10
+            border-white border-2 rounded-full flex justify-center
+            items-center transition hover:border-neutral-300 "
+            >
+              <BiChevronDown
+                className="text-white group-hover:text-neutral-300"
+                size={30}
+              />
+            </div>
           </div>
           <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
