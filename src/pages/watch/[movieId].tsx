@@ -7,7 +7,7 @@ import { authOptions } from "../api/auth/[...nextauth]";
 import { NextPageContext } from "next";
 
 export async function getServerSideProps({ req, res }: NextPageContext) {
-  const session = await getServerSession(req, res, authOptionsptions);
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {
