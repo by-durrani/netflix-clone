@@ -6,8 +6,6 @@ A beautiful Netflix UI clone built with modern frontend tools. Browse movies, wa
 
 ---
 
-## 🚀 Features
-
 ## ✨ Features
 
 - Browse popular & trending movies
@@ -42,6 +40,10 @@ A beautiful Netflix UI clone built with modern frontend tools. Browse movies, wa
 | Language Support    | [TypeScript](https://www.typescriptlang.org/)               |
 
 ---
+
+## Entity Relashionship Diagram
+
+[![ERD](public/images/schema-v1.png)]
 
 ## 📦 Installation
 
