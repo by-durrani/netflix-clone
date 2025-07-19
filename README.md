@@ -2,7 +2,7 @@
 
 A beautiful Netflix UI clone built with modern frontend tools. Browse movies, watch previews, and enjoy a clean responsive interface powered by the TMDb API.
 
-![Netflix Clone Preview](public/images/preview.png)](https://netflix-clone-beta-one-61.vercel.app/)
+[![Netflix Clone Preview](public/images/preview.png)](https://netflix-clone-beta-one-61.vercel.app/)
 
 ---
 
@@ -43,7 +43,7 @@ A beautiful Netflix UI clone built with modern frontend tools. Browse movies, wa
 
 ## Entity Relashionship Diagram
 
-[![ERD](public/images/schema-v1.png)]
+![ERD](public/images/schema-v1.png)
 
 ## 📦 Installation
 
